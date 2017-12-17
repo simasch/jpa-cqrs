@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SakilaApplication {
+public class SakilaNaiveApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SakilaApplication.class, args);
+		SpringApplication.run(SakilaNaiveApplication.class, args);
 	}
 }
