@@ -1,6 +1,7 @@
 package ch.martinelli.sakila.control;
 
 import ch.martinelli.sakila.entity.Actor;
+import ch.martinelli.sakila.entity.ActorInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,5 +23,10 @@ public class ActorRepositoryTest {
         List<Actor> list = actorRepository.findAll();
 
         Assert.assertTrue(list.isEmpty());
+    }
+
+    @Test
+    public  void findOneActorInfo() {
+        ActorInfo actor = actorRepository.findByActorId(1);
     }
 }

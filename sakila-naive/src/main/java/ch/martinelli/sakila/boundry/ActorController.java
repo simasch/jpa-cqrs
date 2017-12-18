@@ -2,6 +2,7 @@ package ch.martinelli.sakila.boundry;
 
 import ch.martinelli.sakila.control.ActorRepository;
 import ch.martinelli.sakila.entity.Actor;
+import ch.martinelli.sakila.entity.ActorInfo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +20,9 @@ public class ActorController {
         this.actorRepository = actorRepository;
     }
 
-    @GetMapping
-    public List<Actor> getAll() {
-        return actorRepository.findAll();
-    }
-
     @GetMapping(path = "{id}")
-    public Actor getOne(@PathVariable Integer id) {
-        return actorRepository.findOne(id);
+    public ActorInfo getOne(@PathVariable Integer id) {
+        return actorRepository.findByActorId(id);
     }
 
 }
