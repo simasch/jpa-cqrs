@@ -1,22 +1,19 @@
 package ch.martinelli.sakila.entity;
 
-import lombok.Data;
-
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-@Data
 @Entity
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "address_address_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_address_id_seq")
+    @SequenceGenerator(name = "address_address_id_seq", sequenceName = "address_address_id_seq")
     @Column(name = "address_id")
     private Integer addressId;
 
@@ -57,4 +54,91 @@ public class Address {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
     private Set<Customer> customers = new HashSet<>();
 
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public Set<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Set<Staff> staff) {
+        this.staff = staff;
+    }
+
+    public Set<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(Set<Store> stores) {
+        this.stores = stores;
+    }
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
+    }
 }

@@ -1,22 +1,49 @@
 package ch.martinelli.sakila.entity;
 
-import lombok.Data;
-
-import java.io.Serializable;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.util.Objects;
 
-@Data
 @Embeddable
 public class FilmCategoryPK implements Serializable {
 
-    @NotNull
     @Column(name = "film_id")
-    private short filmId;
+    private Integer filmId;
 
-    @NotNull
     @Column(name = "category_id")
-    private short categoryId;
+    private Integer categoryId;
+
+    public Integer getFilmId() {
+        return filmId;
+    }
+
+    public void setFilmId(Integer filmId) {
+        this.filmId = filmId;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmCategoryPK that = (FilmCategoryPK) o;
+        return Objects.equals(filmId, that.filmId) &&
+                Objects.equals(categoryId, that.categoryId);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(filmId, categoryId);
+    }
 }

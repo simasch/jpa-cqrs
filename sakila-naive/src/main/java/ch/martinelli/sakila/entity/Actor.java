@@ -1,22 +1,19 @@
 package ch.martinelli.sakila.entity;
 
-import lombok.Data;
-
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-@Data
 @Entity
 public class Actor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "actor_actor_id_sql")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "actor_actor_id_sql")
+    @SequenceGenerator(name = "actor_actor_id_sql", sequenceName = "actor_actor_id_sql")
     @Column(name = "actor_id")
     private Integer actorId;
 
@@ -35,7 +32,46 @@ public class Actor {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "actor")
-    private Set<FilmActor> actors = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "actor", fetch = FetchType.EAGER)
+    private Set<FilmActor> filmActors = new HashSet<>();
 
+    public Integer getActorId() {
+        return actorId;
+    }
+
+    public void setActorId(Integer actorId) {
+        this.actorId = actorId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Set<FilmActor> getFilmActors() {
+        return filmActors;
+    }
+
+    public void setFilmActors(Set<FilmActor> filmActors) {
+        this.filmActors = filmActors;
+    }
 }

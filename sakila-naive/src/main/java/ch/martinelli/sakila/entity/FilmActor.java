@@ -1,29 +1,15 @@
 package ch.martinelli.sakila.entity;
 
-import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
-@Data
 @Entity
 @Table(name = "film_actor")
 public class FilmActor {
 
     @EmbeddedId
-    protected FilmActorPK filmActorPK;
+    private FilmActorPK filmActorPK;
 
     @NotNull
     @Column(name = "last_update")
@@ -38,4 +24,35 @@ public class FilmActor {
     @ManyToOne(optional = false)
     private Film film;
 
+    public FilmActorPK getFilmActorPK() {
+        return filmActorPK;
+    }
+
+    public void setFilmActorPK(FilmActorPK filmActorPK) {
+        this.filmActorPK = filmActorPK;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
+    }
 }

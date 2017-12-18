@@ -10,8 +10,8 @@ import java.util.Set;
 public class Rental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "rental_rental_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rental_rental_id_seq")
+    @SequenceGenerator(name = "rental_rental_id_seq", sequenceName = "rental_rental_id_seq")
     @Column(name = "rental_id")
     private Integer rentalId;
 
@@ -44,4 +44,67 @@ public class Rental {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "rental")
     private Set<Payment> payments = new HashSet<>();
 
+    public Integer getRentalId() {
+        return rentalId;
+    }
+
+    public void setRentalId(Integer rentalId) {
+        this.rentalId = rentalId;
+    }
+
+    public Date getRentalDate() {
+        return rentalDate;
+    }
+
+    public void setRentalDate(Date rentalDate) {
+        this.rentalDate = rentalDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
 }

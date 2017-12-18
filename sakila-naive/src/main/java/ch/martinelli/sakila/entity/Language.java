@@ -1,22 +1,18 @@
 package ch.martinelli.sakila.entity;
 
-import lombok.Data;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
 @Entity
 public class Language {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name = "language_language_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "language_language_id_seq")
+    @SequenceGenerator(name = "language_language_id_seq", sequenceName = "language_language_id_seq")
 
     @Column(name = "language_id")
     private Integer languageId;
@@ -35,4 +31,44 @@ public class Language {
 
     @OneToMany(mappedBy = "originalLanguage")
     private Set<Film> originalLanguageFilms = new HashSet<>();
+
+    public Integer getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Set<Film> films) {
+        this.films = films;
+    }
+
+    public Set<Film> getOriginalLanguageFilms() {
+        return originalLanguageFilms;
+    }
+
+    public void setOriginalLanguageFilms(Set<Film> originalLanguageFilms) {
+        this.originalLanguageFilms = originalLanguageFilms;
+    }
 }
