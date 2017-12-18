@@ -47,11 +47,17 @@ public class Film {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
-    private Set<FilmCategory> filmCategories = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
-    private Set<FilmActor> filmActors = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "film_actor",
+            joinColumns = @JoinColumn(name = "film_id", referencedColumnName = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "actor_id"))
+    private Set<Actor> actors = new HashSet<>();
 
     @JoinColumn(name = "language_id", referencedColumnName = "language_id")
     @ManyToOne(optional = false)
@@ -60,9 +66,6 @@ public class Film {
     @JoinColumn(name = "original_language_id", referencedColumnName = "language_id")
     @ManyToOne
     private Language originalLanguage;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "film")
-    private Set<Inventory> inventories = new HashSet<>();
 
     public Integer getFilmId() {
         return filmId;
@@ -136,22 +139,6 @@ public class Film {
         this.lastUpdate = lastUpdate;
     }
 
-    public Set<FilmCategory> getFilmCategories() {
-        return filmCategories;
-    }
-
-    public void setFilmCategories(Set<FilmCategory> filmCategories) {
-        this.filmCategories = filmCategories;
-    }
-
-    public Set<FilmActor> getFilmActors() {
-        return filmActors;
-    }
-
-    public void setFilmActors(Set<FilmActor> filmActors) {
-        this.filmActors = filmActors;
-    }
-
     public Language getLanguage() {
         return language;
     }
@@ -168,13 +155,19 @@ public class Film {
         this.originalLanguage = originalLanguage;
     }
 
-    public Set<Inventory> getInventories() {
-        return inventories;
+    public Set<Category> getCategories() {
+        return categories;
     }
 
-    public void setInventories(Set<Inventory> inventories) {
-        this.inventories = inventories;
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
+    public Set<Actor> getActors() {
+        return actors;
+    }
 
+    public void setActors(Set<Actor> actors) {
+        this.actors = actors;
+    }
 }

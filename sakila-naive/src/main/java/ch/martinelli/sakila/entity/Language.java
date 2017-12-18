@@ -26,12 +26,6 @@ public class Language {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "language")
-    private Set<Film> films = new HashSet<>();
-
-    @OneToMany(mappedBy = "originalLanguage")
-    private Set<Film> originalLanguageFilms = new HashSet<>();
-
     public Integer getLanguageId() {
         return languageId;
     }
@@ -56,19 +50,4 @@ public class Language {
         this.lastUpdate = lastUpdate;
     }
 
-    public Set<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
-
-    public Set<Film> getOriginalLanguageFilms() {
-        return originalLanguageFilms;
-    }
-
-    public void setOriginalLanguageFilms(Set<Film> originalLanguageFilms) {
-        this.originalLanguageFilms = originalLanguageFilms;
-    }
 }

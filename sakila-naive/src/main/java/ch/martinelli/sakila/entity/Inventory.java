@@ -28,7 +28,7 @@ public class Inventory {
     @ManyToOne(optional = false)
     private Store store;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "inventory")
+    @OneToMany(mappedBy = "inventory")
     private Set<Rental> rentals = new HashSet<>();
 
     public Integer getInventoryId() {

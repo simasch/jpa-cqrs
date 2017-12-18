@@ -1,5 +1,7 @@
 package ch.martinelli.sakila.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,8 +28,9 @@ public class Category {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
-    private Set<FilmCategory> filmCategories = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
+    private Set<Film> films = new HashSet<>();
 
     public Integer getCategoryId() {
         return categoryId;
@@ -53,11 +56,5 @@ public class Category {
         this.lastUpdate = lastUpdate;
     }
 
-    public Set<FilmCategory> getFilmCategories() {
-        return filmCategories;
-    }
 
-    public void setFilmCategories(Set<FilmCategory> filmCategories) {
-        this.filmCategories = filmCategories;
-    }
 }

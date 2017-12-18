@@ -32,8 +32,8 @@ public class Actor {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "actor", fetch = FetchType.EAGER)
-    private Set<FilmActor> filmActors = new HashSet<>();
+    @ManyToMany(mappedBy = "actors")
+    private Set<Film> films = new HashSet<>();
 
     public Integer getActorId() {
         return actorId;
@@ -67,11 +67,11 @@ public class Actor {
         this.lastUpdate = lastUpdate;
     }
 
-    public Set<FilmActor> getFilmActors() {
-        return filmActors;
+    public Set<Film> getFilms() {
+        return films;
     }
 
-    public void setFilmActors(Set<FilmActor> filmActors) {
-        this.filmActors = filmActors;
+    public void setFilms(Set<Film> films) {
+        this.films = films;
     }
 }

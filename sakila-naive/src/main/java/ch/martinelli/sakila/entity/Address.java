@@ -45,15 +45,6 @@ public class Address {
     @ManyToOne(optional = false)
     private City city;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
-    private Set<Staff> staff = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
-    private Set<Store> stores = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
-    private Set<Customer> customers = new HashSet<>();
-
     public Integer getAddressId() {
         return addressId;
     }
@@ -116,29 +107,5 @@ public class Address {
 
     public void setCity(City city) {
         this.city = city;
-    }
-
-    public Set<Staff> getStaff() {
-        return staff;
-    }
-
-    public void setStaff(Set<Staff> staff) {
-        this.staff = staff;
-    }
-
-    public Set<Store> getStores() {
-        return stores;
-    }
-
-    public void setStores(Set<Store> stores) {
-        this.stores = stores;
-    }
-
-    public Set<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Set<Customer> customers) {
-        this.customers = customers;
     }
 }

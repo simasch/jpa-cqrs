@@ -27,7 +27,7 @@ public class Country {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "country")
+    @OneToMany(mappedBy = "country")
     private Set<City> cities = new HashSet<>();
 
     public Integer getCountryId() {

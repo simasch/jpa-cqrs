@@ -26,12 +26,12 @@ public class City {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "city")
-    private Set<Address> addressSet = new HashSet<>();
-
     @JoinColumn(name = "country_id", referencedColumnName = "country_id")
     @ManyToOne(optional = false)
     private Country country;
+
+    @OneToMany(mappedBy = "city")
+    private Set<Address> addresses = new HashSet<>();
 
     public Integer getCityId() {
         return cityId;
@@ -57,19 +57,19 @@ public class City {
         this.lastUpdate = lastUpdate;
     }
 
-    public Set<Address> getAddressSet() {
-        return addressSet;
-    }
-
-    public void setAddressSet(Set<Address> addressSet) {
-        this.addressSet = addressSet;
-    }
-
     public Country getCountry() {
         return country;
     }
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
 }
