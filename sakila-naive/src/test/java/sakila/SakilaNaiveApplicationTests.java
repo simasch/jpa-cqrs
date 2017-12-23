@@ -1,4 +1,4 @@
-package ch.martinelli.sakila;
+package sakila;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
