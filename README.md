@@ -2,4 +2,4 @@
 
 ## Sakila Database
 
-The scripts for the sakila demo database were taken form jOOQ: https://github.com/jOOQ/jOOQ/tree/master/jOOQ-examples/Sakila
+The scripts to create the demo Sakila database can be found in the jOOQ repository: https://github.com/jOOQ/jOOQ/tree/master/jOOQ-examples/Sakila
