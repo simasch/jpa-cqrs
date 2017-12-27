@@ -26,7 +26,7 @@ public class ActorController {
 
     @GetMapping(path = "{id}")
     public Actor getOne(@PathVariable Integer id) {
-        return actorRepository.findOne(id);
+        return actorRepository.getOne(id);
     }
 
 }

@@ -28,7 +28,7 @@ public class FilmController {
 
     @GetMapping(path = "{id}")
     public Film getOne(@PathVariable Integer id) {
-        return filmRepository.findOne(id);
+        return filmRepository.getOne(id);
     }
 
 }
