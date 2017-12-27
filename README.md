@@ -18,4 +18,4 @@ Create a database, a user and a password all with the name sakila and create the
 - postgres-sakila-schema.sql
 - postgres-sakila-insert-data.sql
 
-You have to replace **OWNER TO postgres** with **OWNER TO sakila** in the schema script.
+You have to replace **OWNER TO postgres** with **OWNER TO sakila** in the schema script before executing.
