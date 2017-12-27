@@ -1,13 +1,11 @@
 # JPA Demo Project using Sakila Database
 
-## Sakila Database
-
-### Database installation
-The examples use PostgreSQL database.
+## Database installation
+The examples uses PostgreSQL database.
 
 If you don't want to install PosgreSQL you can use one of these:
 
-- Windows: PosgreSQL Portable: https://gareth.flowers/postgresql-portable/ and
+- Windows: PosgreSQL Portable: https://gareth.flowers/postgresql-portable/
 - Mac: Postgres.app http://postgresapp.com/
 
 ### Schema creation
