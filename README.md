@@ -2,8 +2,15 @@
 
 ## Sakila Database
 
+### Database installation
 The examples use PostgreSQL database.
-If you are using Windows there is a PosgreSQL Portable: https://gareth.flowers/postgresql-portable/ and if you are on Mac you can use Postgres.app http://postgresapp.com/ if you don't want to install PostgreSQL on your computer.
+
+If you don't want to install PosgreSQL you can use one of these:
+
+- Windows: PosgreSQL Portable: https://gareth.flowers/postgresql-portable/ and
+- Mac: Postgres.app http://postgresapp.com/
+
+### Schema creation
 
 The scripts to create the demo Sakila database can be found in the jOOQ repository: https://github.com/jOOQ/jOOQ/tree/master/jOOQ-examples/Sakila
 
