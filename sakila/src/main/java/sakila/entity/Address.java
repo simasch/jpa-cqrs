@@ -1,10 +1,15 @@
 package sakila.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+@Data
 @Entity
 public class Address {
 
@@ -42,67 +47,12 @@ public class Address {
     @ManyToOne(optional = false)
     private City city;
 
-    public Integer getAddressId() {
-        return addressId;
-    }
+    @OneToMany(mappedBy = "address")
+    private Set<Store> stores = new HashSet<>();
 
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
+    @OneToMany(mappedBy = "address")
+    private Set<Staff> staff = new HashSet<>();
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
+    @OneToMany(mappedBy = "address")
+    private Set<Customer> customers = new HashSet<>();
 }

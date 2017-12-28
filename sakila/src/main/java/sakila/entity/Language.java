@@ -1,10 +1,15 @@
 package sakila.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+@Data
 @Entity
 public class Language {
 
@@ -24,28 +29,9 @@ public class Language {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
 
-    public Integer getLanguageId() {
-        return languageId;
-    }
+    @OneToMany(mappedBy = "language")
+    private Set<Film> films = new HashSet<>();
 
-    public void setLanguageId(Integer languageId) {
-        this.languageId = languageId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
+    @OneToMany(mappedBy = "originalLanguage")
+    private Set<Film> filmsInOriginalLanguage = new HashSet<>();
 }
